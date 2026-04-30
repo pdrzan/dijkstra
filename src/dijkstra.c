@@ -77,13 +77,13 @@ int closest(int number_of_vertices, int *distance, bool *visited)
 ShortestPaths dijkstra(int number_of_vertices, int initial_vertex, int **distance_matrix)
 {
   bool *visited = malloc(sizeof(bool) * number_of_vertices);
-  int *predecessors = malloc(sizeof(int) * number_of_vertices);
+  int *predecessors = calloc(number_of_vertices, sizeof(int));
 
   ShortestPaths shortestPaths;
 
   shortestPaths.distance = malloc(sizeof(int) * number_of_vertices);
   shortestPaths.paths = malloc(sizeof(int*) * number_of_vertices);
-  shortestPaths.path_lengths = malloc(sizeof(int) * number_of_vertices);
+  shortestPaths.path_lengths = calloc(number_of_vertices, sizeof(int));
 
   for (int vertex = 0; vertex < number_of_vertices; vertex++) {
     shortestPaths.distance[vertex] = INT_MAX;
